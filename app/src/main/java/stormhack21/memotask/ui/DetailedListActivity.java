@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import stormhack21.memotask.R;
+import stormhack21.memotask.model.Task;
 
 public class DetailedListActivity extends AppCompatActivity {
 
@@ -12,5 +13,9 @@ public class DetailedListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detailed_list);
+
+
+
+
     }
 }
