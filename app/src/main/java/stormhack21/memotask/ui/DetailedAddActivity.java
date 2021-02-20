@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import stormhack21.memotask.R;
 
-public class DetailAddActivity extends AppCompatActivity {
+public class DetailedAddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

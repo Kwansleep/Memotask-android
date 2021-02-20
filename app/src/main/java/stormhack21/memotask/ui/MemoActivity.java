@@ -1,10 +1,12 @@
-package stormhack21.memotask;
+package stormhack21.memotask.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Memoactivity extends AppCompatActivity {
+import stormhack21.memotask.R;
+
+public class MemoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
