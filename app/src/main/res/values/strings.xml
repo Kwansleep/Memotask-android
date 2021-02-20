@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">memotask</string>
+    <string name="type">Type</string>
+    <string name="draw">DRAW</string>
 </resources>
