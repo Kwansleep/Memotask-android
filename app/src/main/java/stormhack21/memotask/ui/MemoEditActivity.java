@@ -54,14 +54,17 @@ public class MemoEditActivity extends AppCompatActivity {
             }
         });
 
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText editText1 = (EditText) findViewById(R.id.edit);
-                Intent intent1 = new Intent(MemoEditActivity.this, DetailedAddActivity.class);
-                intent1.putExtra("Description", editText1.toString());
-                startActivity(intent1);
-            }
-        });
+
+            update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(!editText.getText().toString().isEmpty()) {
+                    EditText editText1 = (EditText) findViewById(R.id.edit);
+                    Intent intent1 = new Intent(MemoEditActivity.this, DetailedAddActivity.class);
+                    intent1.putExtra("Description", editText1.getText().toString());
+                    startActivity(intent1);
+                    }
+                }
+            });
     }
 }

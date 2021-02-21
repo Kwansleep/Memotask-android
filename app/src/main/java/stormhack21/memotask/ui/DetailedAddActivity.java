@@ -69,6 +69,9 @@ public class DetailedAddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_add);
+        Intent intent = getIntent();
+        String description = intent.getStringExtra("Description");
+
 
         // get reference for Views
         addTitle = findViewById(R.id.detailAddTitle);
@@ -77,7 +80,8 @@ public class DetailedAddActivity extends AppCompatActivity {
         locationText = findViewById(R.id.detailAddLocationText);
         descriptionText = findViewById(R.id.detailAddDescriptionText);
 
-
+        if(description != null)
+            descriptionText.setText(description);
         dropOverlay = findViewById(R.id.img);
         dropOverlay.setAlpha(0.5f);
         dropOverlay.setOnDragListener(new MyDragListener());

@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -116,6 +117,8 @@ public class DetailedListActivity extends AppCompatActivity {
             private TextView description;
             private TextView location;
 
+            private ImageButton delete;
+
             private CardView rootView;
             private ConstraintLayout fullInfoView;
             private View parentView;
@@ -132,6 +135,7 @@ public class DetailedListActivity extends AppCompatActivity {
                 this.rootView = view.findViewById(R.id.detailedTaskCardView);
                 this.fullInfoView = view.findViewById(R.id.detailedTaskCardFullInfo);
 
+                this.delete = view.findViewById(R.id.deleteTask);
                 this.parentView = view;
             }
         }
@@ -150,7 +154,7 @@ public class DetailedListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull mViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull mViewHolder holder, final int position) {
 
             // set up Views variable
             TextView titleView = holder.title;
@@ -223,11 +227,26 @@ public class DetailedListActivity extends AppCompatActivity {
 
                 }
             });
+
+            final ImageButton delete = holder.delete;
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    removeAt(position);
+                }
+            });
         }
 
         @Override
         public int getItemCount() {
             return tasks.size();
+        }
+
+        public void removeAt(int position) {
+
+            tasks.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, tasks.size());
         }
     }
 
