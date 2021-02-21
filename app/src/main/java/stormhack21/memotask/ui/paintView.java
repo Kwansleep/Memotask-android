@@ -11,17 +11,21 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 import stormhack21.memotask.model.finger;
 
 public class paintView extends View {
 
-    public static int SIZEOFPEN = 5;
+    public static int SIZEOFPEN = 12;
     public static final int DEFAULT_COLOR1 = Color.BLACK;
     public static final int DEFAULT_COLOR2 = Color.RED;
     public static final int DEFAULT_COLOR3 = Color.GREEN;
@@ -177,6 +181,29 @@ public class paintView extends View {
         }
 
         return true;
+    }
+
+    public void saveBitmap(File file)
+    {
+        try
+        {
+            Bitmap tempBit = bitmap;
+            tempBit.compress(Bitmap.CompressFormat.PNG, 90, new FileOutputStream(file));
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    public Boolean checkEmpty()
+    {
+        if(paths.size() == 0)
+            return true;
+        else
+            return false;
+
     }
 }
 

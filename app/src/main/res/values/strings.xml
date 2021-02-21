@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">memotask</string>
     <string name="title_activity_memo2">MemoActivity2</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">TYPE</string>
+    <string name="tab_text_2">DRAW</string>
     <string name="type">TYPE</string>
     <string name="draw">DRAW</string>
     <string name="title_activity_main2">MainActivity2</string>
-    <string name="todo">TODO</string>
+    <string name="todo2">TODO1</string>
     <string name="todo1">TODO</string>
+    <string name="try_to_write_something">Try to write something</string>
+    <string name="todo">TODO</string>
+    <string name="todo3">TODO3</string>
+    <string name="todo4">TODO4</string>
+    <string name="save">SAVE</string>
+    <string name="delete">DELETE</string>
 </resources>
