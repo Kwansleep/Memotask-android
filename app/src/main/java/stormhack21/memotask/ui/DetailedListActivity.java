@@ -2,6 +2,8 @@ package stormhack21.memotask.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,6 +12,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +72,7 @@ public class DetailedListActivity extends AppCompatActivity {
         String TAG = "TaskAdapter";
 
         private Context context;
-        List<Task> tasks;
+        private List<Task> tasks;
 
         private class mViewHolder extends RecyclerView.ViewHolder{
 
@@ -80,6 +84,8 @@ public class DetailedListActivity extends AppCompatActivity {
             private TextView description;
             private TextView location;
 
+            private CardView rootView;
+            private ConstraintLayout fullInfoView;
             private View parentView;
 
             public mViewHolder(View view) {
@@ -90,6 +96,9 @@ public class DetailedListActivity extends AppCompatActivity {
                 this.countdown = view.findViewById(R.id.detailedTaskCardCountdown);
                 this.description = view.findViewById(R.id.detailedTaskCardDescription);
                 this.location = view.findViewById(R.id.detailedTaskCardLocation);
+
+                this.rootView = view.findViewById(R.id.detailedTaskCardView);
+                this.fullInfoView = view.findViewById(R.id.detailedTaskCardFullInfo);
 
                 this.parentView = view;
             }
@@ -118,6 +127,10 @@ public class DetailedListActivity extends AppCompatActivity {
             final TextView countdown = holder.countdown;
             TextView descriptionView = holder.description;
             TextView locationView = holder.location;
+
+            final CardView rootView = holder.rootView;
+            final ConstraintLayout fullInfoView = holder.fullInfoView;
+
 
             // Get the current task
             SingleTask thisTask = (SingleTask)tasks.get(position);
@@ -162,15 +175,22 @@ public class DetailedListActivity extends AppCompatActivity {
             // Location
             locationView.setText(thisTask.getLocation());
 
-            /*
-            holder.parentView.setOnClickListener(new View.OnClickListener() {
+            View parentView = holder.parentView;
+            parentView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
+                    if (fullInfoView.getVisibility() == View.GONE){
+                        TransitionManager.beginDelayedTransition(detailTaskRecyclerView,new AutoTransition());
+                        fullInfoView.setVisibility(View.VISIBLE);
+                    } else {
+                        //TransitionManager.beginDelayedTransition(rootView,new AutoTransition());
+                        TransitionManager.beginDelayedTransition(detailTaskRecyclerView, new AutoTransition());
+                        fullInfoView.setVisibility(View.GONE);
+                    }
+
                 }
             });
-
-             */
         }
 
         @Override
