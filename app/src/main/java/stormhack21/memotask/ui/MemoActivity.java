@@ -66,26 +66,39 @@ public class MemoActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // local variables
                 String description = null;
-                String path = null;
+                String fileDirPath = String.valueOf(getApplicationContext().getFilesDir());
                 Intent intent = new Intent(MemoActivity.this, MemoListActivity.class);
                 Fragment fragment2 = sectionsPagerAdapter.getMCurrentFragment();
+
+                // get views
                 View view2 = fragment2.getView();
                 paintView paintView = view2.findViewById(R.id.paintView);
                 EditText editText = (EditText) view2.findViewById(R.id.descrip);
+
                 if (editText != null) {
                     if (!editText.getText().toString().isEmpty())
                         description = editText.getText().toString();
+
+                    String fileName = (fileDirPath + (memoManager.size() + 1) + ".png");
+                    memoManager.saveStagedBitmap(fileName);
+
+                } else if (paintView.checkEmpty() == false) {
+
+                        File file = new File(fileDirPath + (memoManager.size() + 1) + ".png");
+                        fileDirPath = (fileDirPath + (memoManager.size() + 1) + ".png");
+                        paintView.saveBitmap(file);
+
+                        String stagedDescription = memoManager.getStageDesc();
+                        if(stagedDescription != null){
+                            description = stagedDescription;
+                        }
                 }
-                else if (paintView.checkEmpty() == false) {
-                    path = String.valueOf(getApplicationContext().getFilesDir());
-                    File file = new File(path + memoManager.size() + 1 + ".png");
-                    path = (path + memoManager.size() + 1 + ".png");
-                    paintView.saveBitmap(file);
-                }
+
                 MemoClass memoClass;
-                if(description != null || path != null) {
-                    memoClass = new MemoClass(description, path);
+                if(description != null || fileDirPath != null) {
+                    memoClass = new MemoClass(description, fileDirPath);
                     memoManager.add(memoClass);
                 }
                 startActivity(intent);

@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 
+import stormhack21.memotask.model.MemoManager;
 import stormhack21.memotask.model.finger;
 
 public class paintView extends View {
@@ -128,6 +129,7 @@ public class paintView extends View {
         }
         canvas.drawBitmap(bitmap, 0, 0, mBitmapPaint);
         canvas.restore();
+
     }
 
     private void touchStart(float x, float y)
@@ -179,7 +181,7 @@ public class paintView extends View {
                 invalidate();
                 break;
         }
-
+        MemoManager.getInstance().stage(bitmap);
         return true;
     }
 
@@ -189,6 +191,7 @@ public class paintView extends View {
         {
             Bitmap tempBit = bitmap;
             tempBit.compress(Bitmap.CompressFormat.PNG, 90, new FileOutputStream(file));
+            Log.e("Memo","normal bitmap:" + file);
         }
         catch (FileNotFoundException e)
         {
@@ -205,5 +208,11 @@ public class paintView extends View {
             return false;
 
     }
+
+    public Bitmap getBitmap(){
+        return bitmap;
+    }
+
+
 }
 
