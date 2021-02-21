@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -88,6 +89,7 @@ public class DetailedAddActivity extends AppCompatActivity {
                 } else {
                     Log.d("AddActivity","Tried to add single task, but either date or time is missing");
                 }
+                Intent intent = new Intent(DetailedAddActivity.this, DetailedListActivity.class);
             }
         });
 
@@ -101,35 +103,12 @@ public class DetailedAddActivity extends AppCompatActivity {
         // do something with locations
     }
     private void setUpTimePickers() {
-        Button btn2 = findViewById(R.id.tempButton2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                MaterialTimePicker.Builder builder = new MaterialTimePicker.Builder();
-                builder.setTitleText("Time Picker Title");
-                builder.setHour(12);
-                builder.setMinute(0);
-
-                final MaterialTimePicker timePicker = builder.build();
-
-                timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        timeChoice = LocalTime.of(timePicker.getHour(),timePicker.getMinute());
-                        String selectedTimeStr = timeChoice.format(DateTimeFormatter.ofPattern("kk:mm"));
-                        timeText.setText(selectedTimeStr);
-                    }
-                });
-
-                timePicker.show(getSupportFragmentManager(),"TimePicker");
-            }
-        });
 
         // override the on click function for Time EditText
         timeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 MaterialTimePicker.Builder builder = new MaterialTimePicker.Builder();
                 builder.setTitleText("Time Picker Title");
                 builder.setHour(12);

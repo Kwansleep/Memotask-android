@@ -18,7 +18,8 @@
             android:name=".ui.MemoActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".ui.DetailedAddActivity" />
+        <activity android:name=".ui.DetailedAddActivity"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ui.DetailedListActivity" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>

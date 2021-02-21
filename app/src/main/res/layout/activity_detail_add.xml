@@ -7,56 +7,50 @@
     android:layout_height="match_parent"
     tools:context=".ui.DetailedAddActivity">
 
+
     <ImageView
         android:id="@+id/img"
-        android:layout_width="124dp"
-        android:layout_height="132dp"
+        android:layout_width="106dp"
+        android:layout_height="76dp"
         app:layout_constraintBottom_toTopOf="@+id/iconRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_24"/>
+        app:srcCompat="@drawable/ic_baseline_add_24" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/iconRecyclerView"
-        android:background="#FFFF00"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:background="#0097A7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <EditText
         android:id="@+id/detailAddTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="give it a title"
         android:inputType="textPersonName"
         android:text="Title"
+
+        android:textAllCaps="false"
+        android:textColor="#00796B"
+        android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <Button
         android:id="@+id/tempButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="add task"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/iconRecyclerView"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/tempButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="28dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/detailAddDateText"
@@ -64,9 +58,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:background="@null"
         android:focusable="false"
         android:inputType="none"
-        android:text="DateText"
+        android:text="Choose a date"
+        android:textColor="#00796B"
+        android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailAddTitle" />
 
@@ -76,9 +73,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:background="@null"
         android:focusable="false"
         android:inputType="none"
-        android:text="TimeText"
+        android:text="What time?"
+        android:textColor="#00796B"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailAddDateText" />
 
@@ -88,9 +89,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:background="@null"
         android:focusable="false"
         android:inputType="none"
-        android:text="LocationText"
+        android:text="Where to go?"
+        android:textColor="#00796B"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailAddTimeText" />
 
@@ -102,17 +107,20 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/img"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailAddLocationText">
+        app:layout_constraintTop_toBottomOf="@+id/detailAddLocationText"
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/detailAddDescriptionText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="description of task" />
+            android:hint="Begin you plan!"
+            android:textColor="#050505"
+            android:textStyle="bold|italic" />
 
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

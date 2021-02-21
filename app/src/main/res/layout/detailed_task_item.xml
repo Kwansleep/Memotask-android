@@ -24,12 +24,13 @@
                 android:id="@+id/detailedTaskCardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="24dp"
-                android:textSize="24dp"/>
+                android:layout_marginTop="16dp"
+                android:text="Title"
+                android:textSize="24dp"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/detailedTaskCardDate"
@@ -39,6 +40,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:text="Date"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detailedTaskCardTitle" />
@@ -49,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:text="Time"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="@+id/detailedTaskCardDate"
                 app:layout_constraintStart_toEndOf="@+id/detailedTaskCardDate"
                 app:layout_constraintTop_toTopOf="@+id/detailedTaskCardDate" />
@@ -59,13 +62,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Countdown"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textSize="30dp"
-                android:background="#c9ffff"
+                android:background="#0097A7"
                 android:elevation="5dp"
-                android:padding="6dp"/>
+                android:padding="6dp"
+                android:text="Countdown"
+                android:textColor="#FFFFFF"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
