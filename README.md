@@ -10,19 +10,19 @@ in the near future.
 Memo
 - [x] drawing to memos
 - [x] type on memos
-- [] different color pens
-- [] attach photo
+- [ ] different color pens
+- [ ] attach photo
 - [x] memo to detailed task conversion
 task
 - [x] a task List 
 - [x] expendable cards for showing and hiding full information
 - [x] countdown timer
 - [x] drag and drop to add to a task
--[] a task timeline/ tree
--[] checkboxs to description
+- [ ] a task timeline/ tree
+- [ ] checkboxs to description
 Other
--[] create a server to save and share task/memos
--[] enable sharing of tasklist
+- [ ] create a server to save and share task/memos
+- [ ] enable sharing of tasklist
 - [ ] add chat rooms to said shared tasklists
 
 ## Current Demo Images
