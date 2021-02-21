@@ -80,8 +80,8 @@ public class MemoActivity extends AppCompatActivity {
                 if (editText != null) {
                     if (!editText.getText().toString().isEmpty())
                         description = editText.getText().toString();
-
-                    String fileName = (fileDirPath + (memoManager.size() + 1) + ".png");
+                    fileDirPath = (fileDirPath + (memoManager.size() + 1) + ".png");
+                    String fileName = (fileDirPath);
                     memoManager.saveStagedBitmap(fileName);
 
                 } else if (paintView.checkEmpty() == false) {

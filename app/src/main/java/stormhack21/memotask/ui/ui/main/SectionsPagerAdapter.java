@@ -20,7 +20,7 @@ import stormhack21.memotask.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_2,R.string.tab_text_1};
     private final Context mContext;
     private Fragment mCurrentFragment;
 
@@ -36,10 +36,10 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position)
         {
             case 0:
-                fragment = new Frag1();
+                fragment = new Frag2();
                 break;
             case 1:
-                fragment = new Frag2();
+                fragment = new Frag1();
                 break;
         }
         return fragment;

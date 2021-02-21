@@ -50,7 +50,7 @@ public class DetailedListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detailed_list);
 
         // Debug
-        DetailedTaskManager.getInstance().injectDebug();
+        //DetailedTaskManager.getInstance().injectDebug();
 
         // RecyclerView
         detailTaskRecyclerView = findViewById(R.id.detailTaskRecyclerView);

@@ -13,6 +13,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <stormhack21.memotask.model.CustomPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
@@ -23,40 +24,36 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-             />
+            android:layout_height="30dp" />
 
     </stormhack21.memotask.model.CustomPager>
 
-    <ImageButton
-        android:id="@+id/savebtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="#0097A7"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        android:layout_gravity="bottom|end"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        app:srcCompat="@drawable/ic_baseline_save_24"
-        android:contentDescription="@string/todo" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end">
 
-    <ImageButton
-        android:id="@+id/clearbtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        android:background="#0097A7"
-        android:contentDescription="@string/todo1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/savebtn"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/savebtn"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_baseline_clear_24" />
+        <ImageButton
+            android:id="@+id/clearbtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/todo1"
+            app:srcCompat="@drawable/ic_baseline_clear_24"
+            android:layout_margin="4dp"
+            android:background="@drawable/button_background"/>
+
+        <ImageButton
+            android:id="@+id/savebtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:layout_gravity="bottom|end"
+            app:srcCompat="@drawable/ic_baseline_save_24"
+            android:layout_margin="4dp"
+            android:contentDescription="@string/todo"/>
+
+    </LinearLayout>
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

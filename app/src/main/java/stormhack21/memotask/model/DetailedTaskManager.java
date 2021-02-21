@@ -32,6 +32,7 @@ public class DetailedTaskManager {
 
 
     // Debug
+    /*
     public void injectDebug(){
         SingleTask task1 = new SingleTask("Single-1","this is a single task, it is 1 day and 2 minutes from now", LocalDate.now().plusDays(1), LocalTime.now().plusMinutes(2),"location","no-image.img");
         tasks.add(task1);
@@ -41,6 +42,8 @@ public class DetailedTaskManager {
         tasks.add(task3);
         Log.e(TAG,"added debug tasks");
     }
+
+     */
 
     public List<Task> getTasks() {
         return tasks;
