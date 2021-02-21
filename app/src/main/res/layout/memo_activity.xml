@@ -17,13 +17,14 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary" />
+            android:layout_height="30dp"
+             />
 
     </stormhack21.memotask.model.CustomPager>
 
@@ -46,15 +47,16 @@
         android:id="@+id/clearbtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="#00796B"
+        android:layout_gravity="bottom"
+        android:background="#0097A7"
+        android:contentDescription="@string/todo1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/savebtn"
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/savebtn"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_baseline_clear_24"
-        android:layout_gravity="bottom"
-        android:contentDescription="@string/todo1" />
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

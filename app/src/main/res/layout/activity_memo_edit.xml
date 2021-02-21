@@ -28,7 +28,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="44dp"
                 android:autofillHints=""
+                android:background="@null"
+                android:hint="Edit anytime"
                 android:textColor="#050505"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -51,10 +55,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toEndOf="@+id/delete"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintVertical_bias="0.862" />
 
     <ImageButton
         android:id="@+id/delete"
@@ -69,10 +73,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.862" />
 
     <ImageButton
         android:id="@+id/upgradebtn"
@@ -81,10 +85,10 @@
         android:background="#0097A7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/save"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toEndOf="@+id/delete"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.25"
+        app:layout_constraintVertical_bias="0.87"
         app:srcCompat="@drawable/ic_baseline_trending_up_24" />
 
 
