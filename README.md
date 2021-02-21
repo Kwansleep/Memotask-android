@@ -7,20 +7,20 @@ collabration with the tasklist sharing and chatroom functions, which we aim to r
 in the near future.
 
 ## Features(and planned ones)
-Memo
+###Memo
 - [x] drawing to memos
 - [x] type on memos
 - [ ] different color pens
 - [ ] attach photo
 - [x] memo to detailed task conversion
-task
+##task
 - [x] a task List 
 - [x] expendable cards for showing and hiding full information
 - [x] countdown timer
 - [x] drag and drop to add to a task
 - [ ] a task timeline/ tree
 - [ ] checkboxs to description
-Other
+###Other
 - [ ] create a server to save and share task/memos
 - [ ] enable sharing of tasklist
 - [ ] add chat rooms to said shared tasklists
