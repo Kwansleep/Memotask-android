@@ -14,11 +14,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 import java.util.List;
@@ -50,6 +53,34 @@ public class MemoListActivity extends AppCompatActivity {
         adapter = new MyAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        // set up bottom Nav bar
+        BottomNavigationView navigation = findViewById(R.id.bottom_navigation_memo);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent;
+                switch(item.getItemId()){
+                    case R.id.menu_toMemoList:
+                        break;
+                    case R.id.menu_toDetailedList:
+                        intent = new Intent(getApplicationContext(),DetailedListActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    case R.id.menu_addDetailedTask:
+                        intent = new Intent(getApplicationContext(),DetailedAddActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    default:
+                        throw new RuntimeException("Invalid menu choice");
+                }
+                return false;
+            }
+        });
+
     }
 
     @Override
