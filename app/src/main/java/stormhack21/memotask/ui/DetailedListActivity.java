@@ -16,11 +16,14 @@ import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationMenu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.LocalDate;
@@ -64,6 +67,33 @@ public class DetailedListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // set up bottom Nav bar
+        BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent intent;
+                switch(item.getItemId()){
+                    case R.id.menu_toMemoList:
+                        intent = new Intent(getApplicationContext(),MemoListActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    case R.id.menu_toDetailedList:
+                        break;
+                    case R.id.menu_addDetailedTask:
+                        intent = new Intent(getApplicationContext(),DetailedAddActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    default:
+                        throw new RuntimeException("Invalid menu choice");
+                }
+                return false;
+            }
+        });
+
 
     }
 
