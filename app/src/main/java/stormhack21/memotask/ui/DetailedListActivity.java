@@ -37,8 +37,6 @@ public class DetailedListActivity extends AppCompatActivity {
 
     RecyclerView detailTaskRecyclerView;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,8 +119,6 @@ public class DetailedListActivity extends AppCompatActivity {
             TextView descriptionView = holder.description;
             TextView locationView = holder.location;
 
-
-
             // Get the current task
             SingleTask thisTask = (SingleTask)tasks.get(position);
 
@@ -166,22 +162,26 @@ public class DetailedListActivity extends AppCompatActivity {
             // Location
             locationView.setText(thisTask.getLocation());
 
-
-            // Set On clicker listener
-            //Log.e("tracking Number View:","tracking: " + trackingNumber);
+            /*
             holder.parentView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                 }
             });
+
+             */
         }
 
         @Override
         public int getItemCount() {
             return tasks.size();
         }
-
     }
 
+    @Override
+    protected void onResume() {
+        detailTaskRecyclerView.getAdapter().notifyDataSetChanged();
+        super.onResume();
+    }
 }

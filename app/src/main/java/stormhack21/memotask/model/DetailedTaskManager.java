@@ -26,6 +26,11 @@ public class DetailedTaskManager {
         return instance;
     }
 
+    public void addTask(Task task){
+        tasks.add(task);
+    }
+
+
     // Debug
     public void injectDebug(){
         SingleTask task1 = new SingleTask("Single-1","this is a single task, it is 1 day and 2 minutes from now", LocalDate.now().plusDays(1), LocalTime.now().plusMinutes(2),"location","no-image.img");
