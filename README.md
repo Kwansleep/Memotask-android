@@ -18,11 +18,11 @@ task
 - [x] expendable cards for showing and hiding full information
 - [x] countdown timer
 - [x] drag and drop to add to a task
-- [] a task timeline/ tree
-- [] checkboxs to description
+-[] a task timeline/ tree
+-[] checkboxs to description
 Other
-- [] create a server to save and share task/memos
-- [] enable sharing of tasklist
-- [] add chat rooms to said shared tasklists
+-[] create a server to save and share task/memos
+-[] enable sharing of tasklist
+- [ ] add chat rooms to said shared tasklists
 
 ## Current Demo Images
