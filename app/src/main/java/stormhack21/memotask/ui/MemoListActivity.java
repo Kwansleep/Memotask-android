@@ -36,6 +36,14 @@ public class MemoListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo_list);
+        ImageButton imageButton = (ImageButton)findViewById(R.id.addbtn);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
+                startActivity(intent);
+            }
+        });
         memoManager = MemoManager.getInstance();
 
         recyclerView = findViewById(R.id.memoList);
