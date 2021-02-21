@@ -39,6 +39,9 @@ public class MemoListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo_list);
+        memoManager = MemoManager.getInstance();
+
+
         ImageButton imageButton = (ImageButton)findViewById(R.id.addbtn);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,13 +50,12 @@ public class MemoListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        memoManager = MemoManager.getInstance();
+
 
         recyclerView = findViewById(R.id.memoList);
         adapter = new MyAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
 
         // set up bottom Nav bar
         BottomNavigationView navigation = findViewById(R.id.bottom_navigation_memo);

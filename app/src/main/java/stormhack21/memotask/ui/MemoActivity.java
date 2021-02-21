@@ -83,18 +83,12 @@ public class MemoActivity extends AppCompatActivity {
                     path = (path + memoManager.size() + 1 + ".png");
                     paintView.saveBitmap(file);
                 }
-
-                MemoClass memoClass = new MemoClass(description, path);
-
-                memoManager.add(memoClass);
-
-                if(editText != null)
-                {
-                    if (!editText.getText().toString().isEmpty())
-                        startActivity(intent);
+                MemoClass memoClass;
+                if(description != null || path != null) {
+                    memoClass = new MemoClass(description, path);
+                    memoManager.add(memoClass);
                 }
-                else if (paintView.checkEmpty() == false)
-                        startActivity(intent);
+                startActivity(intent);
             }
         });
     }
