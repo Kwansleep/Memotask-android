@@ -8,18 +8,11 @@
     tools:context=".ui.DetailedAddActivity">
 
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="106dp"
-        android:layout_height="76dp"
-        app:layout_constraintBottom_toTopOf="@+id/iconRecyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/iconRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingTop="4dpdp"
         android:background="#0097A7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,21 +36,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/tempButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="add task"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/iconRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <EditText
         android:id="@+id/detailAddDateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:paddingTop="8dp"
         android:background="@null"
         android:focusable="false"
         android:inputType="none"
@@ -72,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:paddingTop="8dp"
         android:background="@null"
         android:focusable="false"
         android:inputType="none"
@@ -88,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:paddingTop="8dp"
         android:background="@null"
         android:focusable="false"
         android:inputType="none"
@@ -103,24 +89,60 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/img"
+        android:layout_marginBottom="8dp"
+        android:paddingTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/iconRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailAddLocationText"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/detailAddLocationText">
 
         <EditText
             android:id="@+id/detailAddDescriptionText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Begin you plan!"
+            android:hint="Begin your plan!"
             android:textColor="#050505"
             android:textStyle="bold|italic" />
 
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/iconRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_outline_crop_free_24" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:orientation="horizontal"
+        android:background="#0097A7"
+        android:gravity="right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/iconRecyclerView">
+
+        <Button
+            android:id="@+id/returnButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Return"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/addTaskButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add task"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

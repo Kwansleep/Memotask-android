@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
@@ -43,7 +42,6 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.SimpleTimeZone;
 
 import stormhack21.memotask.R;
 import stormhack21.memotask.model.DetailedTaskManager;
@@ -51,15 +49,21 @@ import stormhack21.memotask.model.SingleTask;
 
 public class DetailedAddActivity extends AppCompatActivity {
 
-    private ImageView imageView;
+    // References to views
+    private ImageView dropOverlay;
     private EditText addTitle;
     private EditText dateText;
     private EditText timeText;
     private EditText locationText;
     private EditText descriptionText;
 
+    // stored fields
     private LocalDate dateChoice;
     private LocalTime timeChoice;
+    private MaterialDatePicker datePicker;
+
+    // state check
+    private boolean needCountCountTimer = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +78,12 @@ public class DetailedAddActivity extends AppCompatActivity {
         descriptionText = findViewById(R.id.detailAddDescriptionText);
 
 
-        imageView = findViewById(R.id.img);
-        imageView.setOnDragListener(new MyDragListener());
+        dropOverlay = findViewById(R.id.img);
+        dropOverlay.setAlpha(0.5f);
+        dropOverlay.setOnDragListener(new MyDragListener());
 
         //debug buttons
-        Button btn = findViewById(R.id.tempButton1);
+        Button btn = findViewById(R.id.addTaskButton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +97,17 @@ public class DetailedAddActivity extends AppCompatActivity {
                 Intent intent = new Intent(DetailedAddActivity.this, DetailedListActivity.class);
             }
         });
+
+        Button returnButton = findViewById(R.id.returnButton);
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),DetailedAddActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        dropOverlay.setVisibility(View.GONE);
 
         setUpLocationPickers();
         setUpDatePickers();
@@ -135,7 +151,7 @@ public class DetailedAddActivity extends AppCompatActivity {
         builder.setSelection(MaterialDatePicker.todayInUtcMilliseconds());
         builder.setCalendarConstraints(new CalendarConstraints.Builder().setValidator(DateValidatorPointForward.now()).build());
 
-        final MaterialDatePicker datePicker = builder.build();
+        datePicker = builder.build();
         datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
             @Override
             public void onPositiveButtonClick(Long selection) {
@@ -159,9 +175,46 @@ public class DetailedAddActivity extends AppCompatActivity {
         imageList.add(R.drawable.ic_baseline_access_time_24);
         imageList.add(R.drawable.ic_baseline_add_location_24);
 
+        List<String> nameList = new ArrayList<>();
+        nameList.add("Description");
+        nameList.add("Date");
+        nameList.add("Time");
+        nameList.add("Location");
+
         RecyclerView iconRecyclerView = findViewById(R.id.iconRecyclerView);
-        iconRecyclerView.setAdapter(new IconAdapter(this,imageList));
+        iconRecyclerView.setAdapter(new IconAdapter(this,imageList,nameList));
         iconRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL));
+    }
+
+    private void callDatePicker(){
+        dateText.setVisibility(View.VISIBLE);
+        needCountCountTimer = true;
+        datePicker.show(getSupportFragmentManager(),"DatePicker");
+    }
+    private void callTimePicker(){
+        timeText.setVisibility(View.VISIBLE);
+        needCountCountTimer = true;
+
+        MaterialTimePicker.Builder builder = new MaterialTimePicker.Builder();
+        builder.setTitleText("Time Picker Title");
+        builder.setHour(12);
+        builder.setMinute(0);
+
+        final MaterialTimePicker timePicker = builder.build();
+
+        timePicker.addOnPositiveButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timeChoice = LocalTime.of(timePicker.getHour(),timePicker.getMinute());
+                String selectedTimeStr = timeChoice.format(DateTimeFormatter.ofPattern("kk:mm"));
+                timeText.setText(selectedTimeStr);
+            }
+        });
+
+        timePicker.show(getSupportFragmentManager(),"TimePicker");
+    }
+    private void callLocationChooser(){
+        locationText.setVisibility(View.VISIBLE);
     }
 
     // Adapters
@@ -171,24 +224,27 @@ public class DetailedAddActivity extends AppCompatActivity {
 
         private Context context;
         List<Integer> imageList;
+        List<String> nameList;
 
         private class mViewHolder extends RecyclerView.ViewHolder{
 
             // views in a single icon
             private ImageView image;
-
+            private TextView name;
             private View parentView;
 
             public mViewHolder(View view) {
                 super(view);
                 this.image = view.findViewById(R.id.taskIcon);
                 this.parentView = view;
+                this.name = view.findViewById(R.id.taskIconName);
             }
         }
 
-        public IconAdapter(Context context,List<Integer> imageList){
+        public IconAdapter(Context context, List<Integer> imageList, List<String> nameList){
             this.context = context;
             this.imageList = imageList;
+            this.nameList = nameList;
         }
 
         @NonNull
@@ -204,9 +260,12 @@ public class DetailedAddActivity extends AppCompatActivity {
 
             // set up Views variable
             final ImageView imageView = holder.image;
+            TextView name = holder.name;
+            name.setText(nameList.get(position));
 
             imageView.setImageDrawable(getDrawable(imageList.get(position)));
-            imageView.setTag("image-"+position);
+            imageView.setTag(nameList.get(position));
+
 
             imageView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
@@ -218,6 +277,8 @@ public class DetailedAddActivity extends AppCompatActivity {
                     View.DragShadowBuilder myShadow = new MyDragShadowBuilder(imageView);
 
                     v.startDragAndDrop(dragData,myShadow,null,0);
+
+                    dropOverlay.setVisibility(View.VISIBLE);
                     return false;
                 }
             });
@@ -240,26 +301,25 @@ public class DetailedAddActivity extends AppCompatActivity {
 
         @Override
         public boolean onDrag(View v, DragEvent event) {
-
             ImageView imageView = (ImageView) v;
             final int action = event.getAction();
 
             switch (action) {
                 case DragEvent.ACTION_DRAG_STARTED:
                     if(event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)){
-                        imageView.setColorFilter(Color.BLUE);
+                        imageView.setColorFilter(Color.LTGRAY);
                         v.invalidate();
                         return true;
                     }
                     return false;
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    imageView.setColorFilter(Color.GREEN);
+                    imageView.setColorFilter(Color.DKGRAY);
                     v.invalidate();
                     return true;
                 case DragEvent.ACTION_DRAG_LOCATION:
                     return true;
                 case DragEvent.ACTION_DRAG_EXITED:
-                    imageView.setColorFilter(Color.BLUE);
+                    imageView.setColorFilter(Color.LTGRAY);
                     v.invalidate();
                     return true;
                 case DragEvent.ACTION_DROP:
@@ -268,6 +328,23 @@ public class DetailedAddActivity extends AppCompatActivity {
                     String dragData = (String) item.getText();
 
                     Toast.makeText(getApplicationContext(),"Dragged data is " + dragData, Toast.LENGTH_LONG).show();
+
+                    // set up events for each dragged data
+
+                    switch (dragData){
+                        case "Description":
+                            break;
+                        case "Date":
+                            callDatePicker();
+                            break;
+                        case "Time":
+                            callTimePicker();
+                            break;
+                        case "Location":
+                            callLocationChooser();
+                            break;
+                        default:
+                    }
 
                     v.invalidate();
                     return true;
@@ -279,6 +356,8 @@ public class DetailedAddActivity extends AppCompatActivity {
                     } else {
                         //Toast.makeText(getApplicationContext(), "The drop didn't work.", Toast.LENGTH_LONG).show();
                     }
+
+                    dropOverlay.setVisibility(View.GONE);
                     return true;
                 default:
                     throw new RuntimeException("Invalid drag and drop Event");
@@ -316,4 +395,13 @@ public class DetailedAddActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        dateText.setVisibility(View.GONE);
+        timeText.setVisibility(View.GONE);
+        locationText.setVisibility(View.GONE);
+
+    }
 }

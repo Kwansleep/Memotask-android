@@ -59,6 +59,7 @@ public class DetailedListActivity extends AppCompatActivity {
         detailTaskRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // add task FAB
+        /*
         FloatingActionButton button = findViewById(R.id.addDetailedTask);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -67,6 +68,7 @@ public class DetailedListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+         */
 
         // set up bottom Nav bar
         BottomNavigationView navigation = findViewById(R.id.bottom_navigation);
@@ -78,14 +80,14 @@ public class DetailedListActivity extends AppCompatActivity {
                     case R.id.menu_toMemoList:
                         intent = new Intent(getApplicationContext(),MemoListActivity.class);
                         startActivity(intent);
-                        finish();
+
                         break;
                     case R.id.menu_toDetailedList:
                         break;
                     case R.id.menu_addDetailedTask:
                         intent = new Intent(getApplicationContext(),DetailedAddActivity.class);
                         startActivity(intent);
-                        finish();
+
                         break;
                     default:
                         throw new RuntimeException("Invalid menu choice");

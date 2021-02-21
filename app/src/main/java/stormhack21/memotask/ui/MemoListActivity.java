@@ -67,12 +67,10 @@ public class MemoListActivity extends AppCompatActivity {
                     case R.id.menu_toDetailedList:
                         intent = new Intent(getApplicationContext(),DetailedListActivity.class);
                         startActivity(intent);
-                        finish();
                         break;
                     case R.id.menu_addDetailedTask:
                         intent = new Intent(getApplicationContext(),DetailedAddActivity.class);
                         startActivity(intent);
-                        finish();
                         break;
                     default:
                         throw new RuntimeException("Invalid menu choice");
