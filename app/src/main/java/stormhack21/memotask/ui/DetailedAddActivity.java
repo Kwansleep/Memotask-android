@@ -95,6 +95,7 @@ public class DetailedAddActivity extends AppCompatActivity {
                     Log.d("AddActivity","Tried to add single task, but either date or time is missing");
                 }
                 Intent intent = new Intent(DetailedAddActivity.this, DetailedListActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -102,7 +103,7 @@ public class DetailedAddActivity extends AppCompatActivity {
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),DetailedAddActivity.class);
+                Intent intent = new Intent(getApplicationContext(),DetailedListActivity.class);
                 startActivity(intent);
             }
         });
