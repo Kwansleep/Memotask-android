@@ -65,6 +65,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         if (getMCurrentFragment() != object)
             mCurrentFragment = ((Fragment)object);
+
+        // save states
+
         super.setPrimaryItem(container, position, object);
     }
 }

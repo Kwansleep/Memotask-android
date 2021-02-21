@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import stormhack21.memotask.R;
+import stormhack21.memotask.model.MemoManager;
 import stormhack21.memotask.ui.paintView;
 
 public class Frag2 extends Fragment {

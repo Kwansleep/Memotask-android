@@ -12,7 +12,7 @@
         android:id="@+id/iconRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="4dpdp"
+        android:paddingTop="4dp"
         android:background="#0097A7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -46,6 +46,7 @@ public class MemoListActivity extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MemoManager.getInstance().clearStage();
                 Intent intent = new Intent(MemoListActivity.this, MemoActivity.class);
                 startActivity(intent);
             }
