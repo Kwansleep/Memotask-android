@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -45,10 +47,22 @@ public class DetailedListActivity extends AppCompatActivity {
         // Debug
         DetailedTaskManager.getInstance().injectDebug();
 
+        // RecyclerView
         detailTaskRecyclerView = findViewById(R.id.detailTaskRecyclerView);
         TaskAdapter mAdapter = new TaskAdapter(this);
         detailTaskRecyclerView.setAdapter(mAdapter);
         detailTaskRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        // add task FAB
+        FloatingActionButton button = findViewById(R.id.addDetailedTask);
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), DetailedAddActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.mViewHolder> {

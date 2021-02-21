@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetailedAddActivity">
+    tools:context=".ui.DetailedAddActivity"
+    android:id="@+id/detailAddRoot">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="124dp"
+        android:layout_height="132dp"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"/>
+
+    <ImageView
+        android:id="@+id/img2"
+        android:layout_width="124dp"
+        android:layout_height="132dp"
+        app:srcCompat="@drawable/ic_baseline_add_24"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="48dp"/>
+
+
+</RelativeLayout>
